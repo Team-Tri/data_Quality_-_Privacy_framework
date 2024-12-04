@@ -17,7 +17,6 @@ def get_local_sparkContext():
     return spark
 
 
-
 def get_mssql_sparkContext():
     jars_dir = r"C:\Users\sahil.mate\Desktop\dguniversalv2\data_Quality_-_Privacy_framework\jars"
     jdbc_driver_path = [os.path.join(jars_dir, i) for i in os.listdir(jars_dir)]
