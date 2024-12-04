@@ -37,3 +37,14 @@ def get_dataframe(model,column_name):
   df_classified=pd.DataFrame(list2,columns=["Full_Column_Name","Pii","Compliance_to_follow","Recommended_Encryption","Tag"])
   return df_classified,df_c.text
 
+
+def getClassifiedDf(key,path_to_metadata_csv):
+  gem_api_key=key
+  model =get_model(gem_api_key)
+  df=pd.read_csv(path_to_metadata_csv)
+  df["full_column_name"]=df["Table Name"]+"."+df["Column Name"]
+  columns=df.full_column_name
+  df_classified=get_dataframe(model,columns)
+  # df_classified.to_csv('meta_classified.csv')
+  # print("Done")
+  return df_classified
