@@ -1,6 +1,6 @@
 from Utils.sparksession.local_spark_utility import *
 from Utils.connectors.spark_connectors import *
-from Utils.dg_otherUtilities import *
+from Utils.HelperFunction.dg_otherUtilities import *
 from dqsensors_column import *
 import datetime
 from pyspark.sql.functions import *
@@ -78,3 +78,5 @@ def get_columnlevel_assessment_stats(spark, table_name, database_name, database_
     
     
     return profiling_metrics_list
+
+

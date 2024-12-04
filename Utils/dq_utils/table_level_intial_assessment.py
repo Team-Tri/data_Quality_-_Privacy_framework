@@ -1,6 +1,6 @@
 from Utils.sparksession.local_spark_utility import *
 from Utils.connectors.spark_connectors import *
-from Utils.dg_otherUtilities import *
+from Utils.HelperFunction.dg_otherUtilities import *
 from Utils.dq_utils.dqsensors_table import *
 import datetime
 from pyspark.sql.functions import *
