@@ -1,7 +1,7 @@
 from Utils.sparksession.local_spark_utility import *
 from Utils.connectors.spark_connectors import *
 from Utils.dg_otherUtilities import *
-from dqsensors_table import *
+from Utils.dq_utils.dqsensors_table import *
 import datetime
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
@@ -69,9 +69,7 @@ def get_tablelevel_asessment_stats(spark, table_name, database_name, database_ip
                          "duplicate_rows" : count_of_duplicate_rows,
                          "job_run_timestamp" : job_run_timestamp,
                          "job_run_timestamp_timezone" : job_run_timestamp_timezone}
-    
+       
     return original_df, dq_scorecard_dict
-    
-
 
 
