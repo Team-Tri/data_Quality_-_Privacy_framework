@@ -1,6 +1,6 @@
 from Utils.sparksession.local_spark_utility import *
 from Utils.connectors.spark_connectors import *
-from Utils.dg_otherUtilities import *
+from Utils.HelperFunction.dg_otherUtilities import *
 from Utils.dq_utils.dqchecks import *
 from Utils.dq_utils.dqsensors_column import get_column_dtype
 import os

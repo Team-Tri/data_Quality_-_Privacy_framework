@@ -1,7 +1,7 @@
 from Utils.sparksession.local_spark_utility import *
 from Utils.connectors.spark_connectors import *
 from Utils.HelperFunction.dg_otherUtilities import *
-from dqsensors_column import *
+from Utils.dq_utils.dqsensors_column import *
 import datetime
 from pyspark.sql.functions import *
 from pyspark.sql.types import *

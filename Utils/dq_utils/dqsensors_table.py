@@ -3,7 +3,7 @@ from pyspark.sql.functions import *
 from pyspark.sql.types import *
 from datetime import datetime, timedelta
 import hashlib
-from src.inHousedqchecks.dqsensors_column import *
+from Utils.dq_utils.dqsensors_column import *
 
 
 # Table-Level Sensors

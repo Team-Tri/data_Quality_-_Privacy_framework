@@ -1,6 +1,6 @@
-from src.inHousedqchecks.dqsensors_table import *
-from src.inHousedqchecks.dqsensors_column import *
-from src.inHousedqchecks.dqrules import *
+from Utils.dq_utils.dqsensors_table import *
+from Utils.dq_utils.dqsensors_column import *
+from Utils.dq_utils.dqrules import *
 from pyspark.sql.functions import lit
 
 
