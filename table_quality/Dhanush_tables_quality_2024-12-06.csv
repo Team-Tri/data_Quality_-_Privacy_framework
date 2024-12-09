@@ -1,3 +1,0 @@
-table_name,completeness_score,uniqueness_score,ref_integrity_score,freshness_score,avg_dq_score,total_rows,total_columns,count_of_column_name_containing_whitespace,null_values,duplicate_rows,job_run_timestamp,job_run_timestamp_timezone
-DIMCUSTOMER,88.27205635442395,100.0,100.0,95.67999999999999,93.704028177212,18484,29,0,62866,0,2024-12-06 12:36:38 ,India Standard Time
-FACTRESELLERSALES,100.0,100.0,100.0,0.0,90.00000000000001,60855,27,0,0,0,2024-12-06 12:38:49 ,India Standard Time

@@ -1,8 +1,0 @@
-user,database,table,column,key,type,time
-Dhanush,AdventureWorksDW2022,DIMCUSTOMER,YEARLYINCOME,b'\xf2\xa8|\xfeQh\xaeZYzx\xb4*\xf8o\x0f',Deterministic,2024-12-06 12:25:05.627344
-user,database,table,column,key,type,time
-Dhanush,AdventureWorksDW2022,DIMCUSTOMER,YEARLYINCOME,b'f\xd6\x80\xccKW0\x836>B\n\x02\x86\xce\x16',Deterministic,2024-12-06 12:38:42.554752
-user,database,table,column,key,type,time
-Dhanush,AdventureWorksDW2022,DIMCUSTOMER,ADDRESSLINE1,uf8pI_YhdfepLHVvYou0hjsbcvBmcGmbfyMgBZSrKj0=,Non-Deterministic,2024-12-06 12:38:44.170047
-user,database,table,column,key,type,time
-Dhanush,AdventureWorksDW2022,DIMCUSTOMER,ADDRESSLINE2,uf8pI_YhdfepLHVvYou0hjsbcvBmcGmbfyMgBZSrKj0=,Non-Deterministic,2024-12-06 12:38:46.933010
