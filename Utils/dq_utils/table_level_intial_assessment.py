@@ -19,13 +19,15 @@ def get_tablelevel_asessment_stats(spark, table_name, database_name, database_ip
     uniqueness_weight = 0.2
     ref_integrity_weight = 0.2
     freshness_weight = 0.1
-
     metadata_df_mssql = metadata_df
+    metadata_df_mssql = calculate_freshness_score(df=metadata_df_mssql, modified_date_column="Last Modified Date")
+
+   
     original_df = get_table_from_mssql(spark=spark, table_name=table_name, db_ip=database_ip, db_name=database_name)
 
     integrity_result_list = []
     # Calculating Referential integrity score
-    for row in tqdm(metadata_df_mssql.filter(col("Key Type") == "FK" and col("Table Name") == table_name).collect()):
+    for row in tqdm(metadata_df_mssql.filter((col("Key Type") == "FK") & (col("Table Name") == table_name)).collect()):
         table_name = row['Table Name']
         column_name = row['Column Name']
         referenced_table_name = row['Reference Table']
@@ -51,7 +53,9 @@ def get_tablelevel_asessment_stats(spark, table_name, database_name, database_ip
 
     completeness_score, count_of_null_values = get_table_completeness_score(df=original_df)
     uniqueness_score, count_of_duplicate_rows = get_table_uniqueness_score(df=original_df)
-
+    # print(table_name)
+    # print(metadata_df_mssql.select("Table Name").show())
+    # print(metadata_df_mssql.filter(col("Table Name") == table_name).show())
     average_dsm = metadata_df_mssql.filter(col("Table Name") == table_name).select("days_since_modified").collect()[0][0]
     freshness_score = calculate_score(average_dsm)
 

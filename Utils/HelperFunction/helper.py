@@ -14,6 +14,7 @@ import datetime
 import pyodbc,os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+import ast
 # from datetime import datetime
 # To Read Excel into spark
 def generate_non_deterministic_key():
@@ -28,6 +29,19 @@ def generate_deterministic_key(secret):
     The key is derived using SHA-256 hashing and truncated to 16 bytes.
     """
     return os.urandom(16)
+
+def create_db_connection(username, config):
+    password = config[username]["PASSWORD"]
+    server_name = config[username]["SERVER_NAME"]
+    database_name = config[username]["DATABASE_NAME"]
+    
+    # Create the connection string
+    connection_string = f"mssql+pyodbc://{username}:{password}@{server_name}/{database_name}?driver=ODBC+Driver+17+for+SQL+Server"
+    
+    # Create the engine
+    engine = create_engine(connection_string)
+    
+    return engine
 
 def excel_to_spark_df(filepath,spark):
     """
@@ -63,9 +77,10 @@ def encrypt_data(key, data,en_type="Non-Deterministic"):
   """
   if en_type=="Non-Deterministic":
     fernet = Fernet(key)
-    encrypted_data = fernet.encrypt(data.encode())
+    encrypted_data = fernet.encrypt(str(data).encode())
     return encrypted_data.decode()
   elif en_type=="Deterministic":
+    key=ast.literal_eval(key)
     if len(key) != 16:
         raise ValueError("AES key must be 16 bytes long")
     else:
@@ -96,22 +111,26 @@ def decrypt_data(key, encrypted_data ,en_type):
     print("Pass encryption type ")
 
 
-def fetchDataMssql(connection, query):
-    # """Generator function to yield data chunks from SQL Server."""
-    if isinstance(connection,pyodbc.Connection):
+def fetchDataMssql(connection, table_name, columns):
+    """Generator function to yield data chunks from SQL Server."""
+    
+    query = sa.text(f"SELECT {columns} FROM {table_name};")
+    print(f"Constructed query: {query}")
+    
+    if isinstance(connection, pyodbc.Connection):
         print("pyodbc instance")
         cursor = connection.cursor()
-        
-        data = cursor.execute(query).fetchall()
+        data = cursor.execute(str(query)).fetchall()
         cursor.close()
         return data
-    elif isinstance(connection,sqlalchemy.engine.Connection):
+    elif isinstance(connection, sa.engine.Connection):
         print("sqlalchemy instance")
-        if isinstance(query,sqlalchemy.sql.expression.Select):
-          connection.execute(query)
-        else:
-          query_=sqlalchemy.text(query)
-          return connection.execute(query_)
+        result = connection.execute(query)
+        data = result.fetchall()
+        result.close()
+        return data
+    else:
+        raise TypeError("Unsupported connection type")
 
 
 
@@ -270,7 +289,6 @@ def topological_sort(graph):
 
     # Create a list of nodes to iterate over
     nodes = list(graph.keys())
-    
     for node in nodes:
         if node not in visited:
             dfs(node)

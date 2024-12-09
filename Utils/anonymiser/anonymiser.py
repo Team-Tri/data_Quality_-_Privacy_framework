@@ -1,5 +1,6 @@
 from src.Utils.HelperFunction.helper import encrypt_data
 from faker import Faker
+import ast
 fake = Faker()
 
 def anonymize(value, rule, tag ):
@@ -21,7 +22,7 @@ def anonymize(value, rule, tag ):
             return fake.phone_number(format="+## (###) ###-####")
         elif method_ == "encrypt":
             key, encryption_type = rule[method_].split(":::")
-            # print(key,encryption_type)
+            print(key,encryption_type)
             return encrypt_data(key,value,en_type=encryption_type)
         elif method_ == "mask" and rule[method_].startswith("last"):
             parts = rule[method_].split(":::")

@@ -13,7 +13,8 @@ job_run_timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S %Z')
 job_run_timestamp_timezone = str(datetime.datetime.now(datetime.timezone.utc).astimezone().tzinfo)
 
 def get_columnlevel_assessment_stats(spark, table_name, database_name, database_ip, metadata_df):
-
+    table_name_pointer = None
+    table_df_pointer = None
     profiling_metrics_list = []
 
     for row in tqdm(metadata_df.filter(col("Table Name") == table_name).collect()):

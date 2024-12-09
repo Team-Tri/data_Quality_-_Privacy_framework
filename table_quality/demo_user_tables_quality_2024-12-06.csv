@@ -1,0 +1,4 @@
+table_name,completeness_score,uniqueness_score,ref_integrity_score,freshness_score,avg_dq_score,total_rows,total_columns,count_of_column_name_containing_whitespace,null_values,duplicate_rows,job_run_timestamp,job_run_timestamp_timezone
+DIMPRODUCT,74.04657132379904,100.0,100.0,0,77.02328566189954,606,36,0,5662,0,2024-12-06 12:30:07 ,India Standard Time
+FACTRESELLERSALES,100.0,100.0,100.0,0,90.00000000000001,60855,27,0,0,0,2024-12-06 12:32:28 ,India Standard Time
+DIMSALESTERRITORY,98.48484848484848,100.0,,0,86.55303030303033,11,6,0,1,0,2024-12-06 12:35:53 ,India Standard Time

@@ -1,0 +1,41 @@
+{
+    "demo_user":
+    {
+        "PASSWORD":"Dhanush#123#123",
+        "SERVER_NAME":"YI1100230LT",
+        "DATABASE_NAME":"AdventureWorksDW2022",
+        "DATABASE_IP" : "10.4.9.84",
+        "SCHEMA_NAME" :"DBO",
+        "TABLE_REQUIRED":["DIMPRODUCT","FACTRESELLERSALES","DIMSALESTERRITORY"],
+        "Person"   : {"keep":"no"},
+        "Date"     : {"keep":"yes"},
+        "Location" : {"encrypt":"Deterministic"},
+        "Email"    : {"keep":"no"},
+        "Phone"    : {"keep":"no"},
+        "Card"     : {"keep":"no"},
+        "Columns_to_retain" :[],
+        "Columns_to_discard" :[],
+        "Columns_for_custom_anonymise": {
+                                        }
+    },
+    "Dhanush":
+    {
+        "PASSWORD":"root_123_123",
+        "SERVER_NAME":"YI1100230LT",
+        "DATABASE_NAME":"AdventureWorksDW2022",
+        "DATABASE_IP" : "10.4.9.84",
+        "SCHEMA_NAME" :"DBO",
+        "TABLE_REQUIRED":["DIMCUSTOMER","FACTRESELLERSALES"],
+        "Person"   : {"replace":"fake"},
+        "Date"     : {"keep":"no"},
+        "Location" : {"encrypt":"Non-Deterministic"},
+        "Email"    : {"mask":"first:::@:::*"},
+        "Phone"    : {"keep":"no"},
+        "Card"     : {"keep":"no"},
+        "Columns_to_retain" :["BIRTHDATE"],
+        "Columns_to_discard" :["TOTALCHILDREN","NUMBERCHILDRENATHOME"],
+        "Columns_for_custom_anonymise": {
+            "YEARLYINCOME":{"encrypt":"Deterministic"}
+                                        }
+    } 
+}

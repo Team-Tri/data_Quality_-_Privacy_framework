@@ -1,0 +1,7 @@
+table_name,column_name,row_count,completeness_score,uniqueness_score,count_of_nulls,distinct_count,min_value,max_value,tags,column_key_type,job_run_timestamp,job_run_timestamp_timezone
+DIMSALESTERRITORY,SALESTERRITORYKEY,11,100.0,100.0,0,11,1,11,Sensitive,PK,2024-12-06 12:29:11 ,India Standard Time
+DIMSALESTERRITORY,SALESTERRITORYALTERNATEKEY,11,100.0,100.0,0,11,0,10,Sensitive,UK,2024-12-06 12:29:11 ,India Standard Time
+DIMSALESTERRITORY,SALESTERRITORYREGION,11,100.0,100.0,0,11,Australia,United Kingdom,None,NONE,2024-12-06 12:29:11 ,India Standard Time
+DIMSALESTERRITORY,SALESTERRITORYCOUNTRY,11,100.0,63.63636363636363,0,7,Australia,United States,None,NONE,2024-12-06 12:29:11 ,India Standard Time
+DIMSALESTERRITORY,SALESTERRITORYGROUP,11,100.0,36.36363636363637,0,4,Europe,Pacific,None,NONE,2024-12-06 12:29:11 ,India Standard Time
+DIMSALESTERRITORY,SALESTERRITORYIMAGE,11,90.9090909090909,110.00000000000001,1,11,NA,NA,None,NONE,2024-12-06 12:29:11 ,India Standard Time
